@@ -18,14 +18,14 @@ class BasicHashTable:
         # max length of hash table
         self.capacity = capacity
         # underlying data sructure
-        self.elements = [None] * capacity
+        self.storage = [None] * capacity
 
 
 # '''
 # Fill this in.
 # Research and implement the djb2 hash function
 # '''
-def hash(string, max):
+def hash(string):
     hash = 5381
     for x in string:
         hash = ((hash << 5) + hash) + ord(x)
@@ -37,14 +37,19 @@ def hash(string, max):
 # If you are overwriting a value with a different key, print a warning.
 # '''
 def hash_table_insert(hash_table, key, value):
-    pass
+    position = hash(key) % hash_table.capacity
+    if hash_table.storage[position]:
+        print("WARNING: key " + key +
+              " is already in the hash table and will be overwritten")
+    hash_table.storage[position] = Pair(key, value)
+
+    # '''
+    # Fill this in.
+
+    # If you try to remove a value that isn't there, print a warning.
+    # '''
 
 
-# '''
-# Fill this in.
-
-# If you try to remove a value that isn't there, print a warning.
-# '''
 def hash_table_remove(hash_table, key):
     pass
 
