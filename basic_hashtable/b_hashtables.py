@@ -36,21 +36,20 @@ def hash(string):
 def hash_table_insert(hash_table, key, value):
     position = hash(key) % hash_table.capacity
     if hash_table.storage[position]:
-        print("WARNING: key " + key +
+        print("WARNING: Key: " + key +
               " is already in the hash table and will be overwritten")
     hash_table.storage[position] = Pair(key, value)
+
 
 # '''
 # If you try to remove a value that isn't there, print a warning.
 # '''
-
-
 def hash_table_remove(hash_table, key):
     position = hash(key) % hash_table.capacity
     if hash_table.storage[position]:
         hash_table.storage[position] = None
     else:
-        print("WARNING: key " + key +
+        print("WARNING: Key: " + key +
               " is not in the hashtable and therefore couldn't be removed")
         return None
 
@@ -59,7 +58,13 @@ def hash_table_remove(hash_table, key):
 # Should return None if the key is not found.
 # '''
 def hash_table_retrieve(hash_table, key):
-    pass
+    position = hash(key) % hash_table.capacity
+    if hash_table.storage[position]:
+        return hash_table.storage[position].value
+    else:
+        print("WARNING: Key: " + key +
+              " is not in the hashtable and therefore couldn't be retrieved")
+        return None
 
 
 def Testing():
