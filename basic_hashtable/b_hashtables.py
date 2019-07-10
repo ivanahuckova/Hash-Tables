@@ -25,9 +25,9 @@ class BasicHashTable:
 # '''
 def hash(string):
     hash = 5381
-    for x in string:
-        hash = ((hash << 5) + hash) + ord(x)
-    return hash & 0xFFFFFFFF
+    for char in string:
+        hash = ((hash << 5) + hash) + ord(char)
+    return hash
 
 
 # '''
